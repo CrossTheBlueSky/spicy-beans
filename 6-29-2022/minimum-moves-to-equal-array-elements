@@ -1,0 +1,36 @@
+//Related Topics - Array Math Sorting
+/*
+~~~~~~~~~~~~Setup~~~~~~~
+Given an array "nums" of size "n", return the minimum number of moves required to make all array elements equal
+In one move, you can increment or decrement an element of the array by 1
+
+~~~~~Logic~~~~~~~
+    1. Find the average of the array
+        Search for a Math() for this, if not, add and divide
+    1a. Truncate the decimal off of the average if there is one.
+    2. Find the difference between each value and the average
+    3. Probably gonna have to find the absolute values of whatever 2. returns
+    4. Add the values returned from 3.
+    5. ???
+    6. Profit 
+
+*/
+
+minMoves2 = function(nums) {
+ 
+    nums.sort((a,b) => a-b)
+    
+    let median = nums[Math.trunc(nums.length / 2)]
+    let totalMoves = 0;
+    
+    for (i=0; i < nums.length ; i++)
+        {
+            
+            totalMoves = totalMoves + Math.abs(Math.trunc(nums[i] - median))
+            console.log(totalMoves)
+            
+        }
+    
+    return totalMoves
+    
+}

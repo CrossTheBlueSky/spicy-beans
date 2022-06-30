@@ -1,0 +1,53 @@
+//related topics - Greedy, Array, Binary, Index Tree, Segment Tree, Sorting
+
+/* 
+    You are Given an array of people, "people" which are the attributes of some people 
+    in a queue (not necessarily in order). Each people[i] = [h^i, k^i] 
+    represents the ith person of height h^i, with EXACTLY k^i other people in front 
+    have a height greater than or equal to h^i
+
+    Reconstruct and return the queue that is represented by the input array "people"
+    The returned queue should be formatted as an array "queue", where 
+    queue[j] = [h^j, K^j] is the attributes of the jth person in the queue
+    (queue[0] is the person at the front of the queue)
+    
+*/
+
+// h of i = height of that person
+// k of i = number of people in front of that person who are >= their height
+
+//"people" isn't in the order, but can be used to make
+//"queue" be in order, which is the goal.
+
+// Step 1: Create array "queue", set length equal to the length of "people"
+// Step 2: Sort the array "people" based on value of h 
+// Step 3: Sort the duplicates in array "people" based on value of K
+// Step 4: Populate each place in array "queue" with the following logic
+//      Start with first index (shortest person with fewest people in front of them)
+//      Place them at the kth open index in the array
+//    Issue: How to know which indexes are open for multiple passes?      
+//
+//~~~~~~LEARNED - SPLICE() pushes whatever is in the inserted value back to the next index~~~~~
+
+people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]
+
+
+ reconstructQueue = function(people)
+{
+
+    people.sort((a, b) => a[0] - b[0] || b[1] - a[1])
+
+
+    queue = Array()
+
+     for (let i = people.length-1 ; i >= 0 ; i--)
+    {
+      queue.splice(people[i][1], 0, people[i])
+
+        console.log(queue)
+    }
+     
+ return queue    
+}
+
+

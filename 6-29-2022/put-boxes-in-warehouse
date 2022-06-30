@@ -1,0 +1,69 @@
+//related topics - Array, Greedy, Sorting
+//~~~~~~~~~~Setup~~~~~~~~~~~~~
+//Given two arrays of positive integers, "boxes" and "warehouse"
+//"boxes" holds the heights of the boxes at boxes[i]
+//"warehouse" holds the heights of the rooms in the warehouse at warehouse[i]
+//the i of warehouse is the room number
+
+/* ~~~~~~~~~Rules for Putting Boxes in Warehouse~~~~~~~~
+    1. Boxes Cannot Be Stacked
+    2. You can rearrange the insertion order of the boxes
+    3. Boxes can only be pushed into the warehouse from left to right
+    4. If the height of some room in the warehouse is less than the height of
+        a box, then that box and all boxes behind it will be stopped before that room
+*/
+
+//~~~~~~~~~Goal~~~~~~~~~~~
+//return the MAXIMUM NUMBER OF BOXES you can put into the warehouse.
+
+/* Logical Steps
+    1. Initialize a counter that will be our output
+    2. Sort "boxes" from low to high
+    3. Compare boxes[i] to warehouse[i] to look for any lower values
+    4. If there are no lower values, ++ the counter and move to the next loop
+    5. If there are lower values, AND they are not at index 0, ++ the counter
+           array.length() the value to the lower index-1 and loop
+
+*/
+
+/* LEARNED that Math() has a lot more useful methods attached to it that you can use
+   LEARNED that pop() returns the value it removes from the array
+
+
+*/
+
+
+
+const maxBoxesInWarehouse = function (boxes, warehouse)
+{
+    let output = 0;
+    let currentBox = 0;
+    //iterate over warehouse one time, setting the true height for each value
+
+    for(let i = 1; i < warehouse.length ; i++)
+    {
+        warehouse[i] = Math.min(warehouse[i], warehouse[i-1])
+
+    }
+
+
+    boxes.sort((a,b) => a-b)
+  
+    
+    while(warehouse.length > 0 && currentBox < boxes.length){
+        
+        
+        lastSpace = warehouse.pop();
+    
+        
+        if(boxes[currentBox] <= lastSpace)
+            {
+                
+                output++
+                currentBox++
+            }
+        
+        
+    }
+    return output
+}

@@ -1,0 +1,57 @@
+/* Related Topics - Math
+
+~~~~~~~~Problem~~~~~~~~~
+
+Given two non-negative integers "low" and "high", return the count of
+ODD NUMBERS between "low" and "high" (inclusive).
+
+~~~~~~~Logic~~~~~~~~~~~
+
+Populate an array with each integer between low and high
+For loop that checks each value for being divisible by 2
+Return all values that are NOT divisible by 2.
+ */
+
+ var countOdds = function(low, high) {
+    
+    oddIntegers = 0;
+    
+    while(low <= high){
+        
+        if(low % 2 != 0)
+        {
+        oddIntegers++
+        }
+        
+        low++
+        
+
+    }
+    
+    return oddIntegers
+ 
+}
+
+
+/*~~~~~~~~~Better Solution~~~~~~~~~~~
+var countOdds = function(low, high) {
+   
+//    Set the low end to the nearest odd number within the set
+
+    if (low % 2 === 0) {
+        low++  
+    } 
+
+ //   Set the high end to the nearest odd number within the set
+    if (high % 2 === 0) {
+        high-- 
+    } 
+    
+ //   subtract high from low, which will always give an even result (since we're subtracting odd from odd)
+ //   Then divide by 2, since our high-low will always be even.
+ //   This value will always be one less than our answer, so we increment by 1 to return the solution.
+
+    return (high - low) / 2 + 1
+};
+
+*/

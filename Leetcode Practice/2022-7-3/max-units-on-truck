@@ -1,0 +1,57 @@
+/*Related Topics - Array, Greedy, Sorting
+~~~~~~~~~~~~~~~~SETUP~~~~~~~~~~~~
+     Have to put some amount of boxes onto ONE TRUCK
+     You are given a 2D array boxTypes, where boxTypes[i] = [numberOfBoxes, numberOfUnitsPerBox].
+        numberOfBoxes^i is the number of boxes of type i.
+        numberOfUnitsPerBox^i is the number of units in each box of type i.
+
+     You are also given an integer, truckSize, which is the maximum number of boxes that can be put on the truck.
+     You can choose any boxes to put on the truck as long as the number of boxes does not exceed truckSize
+
+~~~~~~~~~~~~~~~GOAL~~~~~~~~~~~~~~~~~~
+Return the MAXIMUM total number of UNITS that can be put on the truck.
+
+
+~~~~~~~~~~~~~~~~~~~~~LOGIC~~~~~~~~~~~~~~~
+
+1. Sort the array to find which boxes have the most units in them
+2. Loop through the array. On each pass
+    Check if numberOfBoxes = 0
+        If not, reduce it by 1
+        Also, increase the totalUnits by whatever the numberOfUnitsPerBox value is
+3. return the value gained from 2
+*/
+
+var maximumUnits = function(boxTypes, truckSize) {
+  
+    
+    let totalUnits = 0;
+    let currentStack = 0;
+    
+    boxTypes.sort((a, b) => b[1]-a[1])
+
+    for(i = 0; i < truckSize; i++)
+    {
+        if (boxTypes[currentStack][0] !== 0)
+        {
+
+            totalUnits = totalUnits + boxTypes[currentStack][1]
+
+            boxTypes[currentStack][0] = boxTypes[currentStack][0] -1
+ 
+            
+
+        }
+
+           else if(currentStack+1 < boxTypes.length)
+        {
+            currentStack++    
+            totalUnits = totalUnits + boxTypes[currentStack][1]
+            boxTypes[currentStack][0] = boxTypes[currentStack][0] -1
+        }
+        
+
+    }
+    
+    return totalUnits;
+};

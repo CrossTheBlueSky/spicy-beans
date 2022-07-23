@@ -1,0 +1,31 @@
+/*Array Dynamic-Programming
+
+~~~~~~~~~~~~~Setup~~~~~~~~~~~~~~
+  There is a row of n Houses
+  Each house can be painted red, blue, or green.
+  The cost of painting each house a certain color is different
+  You must pain all the houses so that no two adjacent houses are the same color
+
+The cost of painting each house with a certain color is represented by an n x 3 cost matrix "costs"
+For example, costs[0][0] is the cost of painting house 0 with the color red
+    and costs[1][2] is the cost of painting house 1 with the color green
+
+~~~~~~~~~~~Clearer Explanation of the matrix~~~~~~~~~~
+
+costs = [[costOfRed, costOfBlue, costOfGreen], [costOfRed, costOfBlue, costOfGreen], [costOfRed, costOfBlue, costOfGreen]]
+                        1                                       2                                   3
+~~~~~~~~~~~~~~Goal~~~~~~~~~~~~~
+
+Return the minimum cost to paint all houses
+
+~~~~~~~~~~~~~Logic~~~~~~~~~~~~~~
+
+1. Find the cheapest paint for house 1
+2. Find the cheapest paint for house 2, and check if it is the same paint as house 1.
+    If so, find the second cheapest paint for house 2
+3. Compare all other houses using the logic at 2.
+4. Keep a running tracker of the value of the chosen paint.
+5. Return that value.
+
+
+*/

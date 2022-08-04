@@ -1,0 +1,64 @@
+/*Related Topics - Hash Table, String, Counting
+
+~~~~~~~~~SETUP~~~~~~~~~~
+
+You are given two strings s1 and s2 of equal length. A String swap is an operation where you choose two indices in a
+string (not necessarily different) and swap the characters at these indices.
+
+Return true if it is possible to make both strings equal by performing at most ONE string swap
+on exactly ONE of the strings. Otherwise, return false.
+
+~~~~~~~~~LOGIC~~~~~~~~~~
+
+1. Set default state to false.
+2. Create a loop that checks to see how many values in the strings are unequal.
+    2a. If the strings are completely equal, return true
+    2b. If only two values are unequal, cross compare those indices to see if 
+        they would be equal after a swap. If so, return true.
+3. Return the answer
+
+
+*/
+
+var areAlmostEqual = function(s1, s2) {
+
+  swappable = false
+  differentValues = []
+  differentLocations = []
+
+
+  for(i = 0; i < s1.length ; i++)
+  {
+    if(s1[i] != s2[i])
+    {
+ 
+        differentValues.push(s2[i])
+        differentLocations.push(i)
+    }
+
+  }
+
+  if(differentValues.length === 0)
+  {
+    swappable = true
+  }
+
+  else if (differentValues.length === 2 && 
+        s1[differentLocations[0]] === s2[differentLocations[1]] &&
+        s1[differentLocations[1]] === s2[differentLocations[0]])
+  {
+
+    swappable = true
+
+    /*if(s1[differentLocations[0]] === s2[differentLocations[1]] && 
+        s1[differentLocations[1]] === s2[differentLocations[0]])
+        {
+            s2[differentLocations[0]] = differentValues[1]
+            s2[differentLocations[1]] = differentValues[0]
+        }
+        */
+  }
+
+  return swappable
+
+};

@@ -1,0 +1,42 @@
+/* Related Topics - Stack, Tree, Depth-First Search
+
+~~~~~~~~~~~~~~SETUP~~~~~~~~~~~~~~~~
+
+Given the root of an n-ary tree, return the preorder traversal of its nodes' values
+
+Nary-tree input serialization is represented in their level order traversal.
+Each group of children is separated by the null value.
+
+~~~~LOGIC~~~~~~
+
+1. Create an array to store the values
+2. Traverse the tree and check for null values
+3. Push all non-null values into the array
+4. Return the array
+
+*/
+
+function preorder(root) {
+    
+    let allValues = [];
+      
+      function traversal(root) 
+      {
+          if (!root) 
+          {
+              return allValues
+          }
+          
+  
+          allValues.push(root.val)
+          
+          if(root.children.length > 0)
+          {
+              root.children.forEach(element => traversal(element))
+          }
+          
+          return allValues
+        }
+      
+    return traversal(root)
+  }

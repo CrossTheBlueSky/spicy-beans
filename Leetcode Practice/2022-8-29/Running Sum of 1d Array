@@ -1,0 +1,34 @@
+/*~~~~~~~~~~~~~~SETUP~~~~~~~~~~~~~~
+Given an array nums, we define a running sum of an array as 
+runningSum[i] = sum(nums[0]...nums[i]).
+
+Return the running sum of "nums"
+
+~~~~~~~~~~~~~~~LOGIC~~~~~~~~~~~~~~~~
+
+1. Make an array to hold the solution output
+2. Make a for loop where the limiter is nums.length
+3. In each loop, add another sum to the solution array
+    3a. First loop will need a variable (previousValue?) that's set to 0.
+        This can be replaced with [i] at the end of each loop
+    3b. This should give the running sum for each index of nums
+4. Return the solution array.
+
+
+*/
+
+var runningSum = function(nums) 
+{
+
+    runningSums = []
+    previousValue = 0
+
+    for(i = 0 ; i < nums.length; i++)
+    {
+        runningSums[i] = previousValue + nums[i]
+        previousValue =  previousValue + nums[i]
+
+    }
+    
+    return runningSums
+};

@@ -8,7 +8,7 @@ Given the head of a singly linked list, reverse the list, and return the reverse
 3. while(head)
     3a. set forward equal to head first
     3b. set head to head.next
-    set forward.next equal to reverse
+    3c. set forward.next equal to reverse
 4. After the loop runs I should be able to return reverse
 
 */

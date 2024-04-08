@@ -6,13 +6,12 @@ Given an integer array nums, return true if any value appears at least twice in 
 
 1. Declare container set
     1a. Populate it with input array
-2. return container.length === nums.length
+2. return container.set === nums.length
 
  */
 var containsDuplicate = function(nums) {
 
-    const arr = new Set(nums)
-    console.log(arr)
+    const cont = new Set(nums)
     
-    return arr.size !== nums.length
+    return cont.size !== nums.length
 };

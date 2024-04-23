@@ -1,0 +1,30 @@
+/*~~~~~~~~QUESTION~~~~~~~~~~~
+
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+~~~~~~~~~~~~LOGICAL BREAKDOWN~~~~~~~~~
+
+1. It doesn't need to be reversed in place, so I can loop through it and make a new linked list.
+    1a. reverse.val = head.val
+        reverse.next = null
+    1b. head.val = head.val.next
+        new.val = head.val
+        new.next = reverse
+    1c. And when head.next is null we add it and then return the new list
+
+
+*/
+
+var reverseList = function(head) {
+    
+    let out = null;
+    let copy = head
+
+    while(copy !== null){
+        let node = new ListNode(copy.val, out)
+        out = node
+        copy = copy.next
+    }
+    
+    return out 
+};

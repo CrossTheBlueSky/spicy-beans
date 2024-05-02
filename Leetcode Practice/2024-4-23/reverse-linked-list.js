@@ -12,6 +12,24 @@ Given the head of a singly linked list, reverse the list, and return the reverse
         new.next = reverse
     1c. And when head.next is null we add it and then return the new list
 
+~~~~~~~~~~~BETTER WAY~~~~~~~~~~~~~~~~
+
+I found out there's a standard for reversing a singly linked list. It looks like this:
+
+function reverseList(head) {
+  let prev = null;
+  let curr = head;
+
+  while (curr !== null) {
+    let next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+  }
+
+  return prev;
+}
+
 
 */
 

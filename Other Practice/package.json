@@ -1,0 +1,8 @@
+{ "scripts" : {
+    "test" : "mocha"
+  }, 
+  "dependencies": {
+    "nodejs": "^0.0.0"
+  }
+  
+}
